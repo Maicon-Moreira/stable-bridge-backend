@@ -1,0 +1,18 @@
+GET http://localhost:3000/
+
+###
+GET http://localhost:3000/
+Content-Type: application/json
+
+{
+  "forceError": true
+}
+
+###
+POST http://localhost:3000/pix/create
+Content-Type: application/json
+
+{
+    "token": "SBRL",
+    "amount": 1000
+}
