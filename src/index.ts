@@ -15,12 +15,11 @@ async function main() {
     new RegExp("^[0-9]{1,5}$"),
     // postgresql://johndoe:randompassword@localhost:5432/mydb?schema=public
     new RegExp(
-      "^postgresql://[a-zA-Z0-9]+:[a-zA-Z0-9]+@[a-zA-Z0-9]+:[0-9]{1,5}/[a-zA-Z0-9]+"
+      // "^postgresql://[a-zA-Z0-9]+:[a-zA-Z0-9]+@[a-zA-Z0-9\.]+:[0-9]{1,5}/[a-zA-Z0-9]+"
+      ".+" // TODO: improve regex
     ),
     // TEST-1092659736125213-897621-ef897668768ed7f6c687ed9f687e6dc8-189237645
-    new RegExp(
-        "^[A-Z]+-[0-9]{16}-[0-9]{6}-[a-zA-Z0-9]{32}-[0-9]{1,10}$"
-    ),
+    new RegExp("^[A-Z]+-[0-9]{16}-[0-9]{6}-[a-zA-Z0-9]{32}-[0-9]{1,10}$"),
   ];
 
   envVariableNames.forEach((name, index) => {
