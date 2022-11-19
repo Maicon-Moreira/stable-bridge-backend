@@ -115,6 +115,7 @@ pixRouter.post(
         estimative: {
           networkGas: 124352135,
           amountToken: 123123,
+          expirationTime: Date.now() + 1000 * 60 * 60 * 24,
         },
       });
     } catch (error: any) {
