@@ -17,3 +17,15 @@ model ExpressInternalError {
   message   String
   stack     String
 }
+
+model TokenPurchase {
+  id         String   @id @default(cuid())
+  createdAt  DateTime @default(now())
+  updatedAt  DateTime @updatedAt
+  token      String
+  amountBRL  Float
+  pix_id     Int
+  qr_code    String
+  ticket_url String
+  paid       Boolean  @default(false)
+}

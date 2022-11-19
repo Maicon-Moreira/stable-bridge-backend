@@ -8,14 +8,6 @@ async function handleInternalServerError(
   req: express.Request,
   res: express.Response
 ) {
-  //   model ExpressInternalError {
-  //     uuid      String   @id @default(cuid())
-  //     createdAt DateTime @default(now())
-  //     updatedAt DateTime @updatedAt
-  //     message   String
-  //     stack     String
-  //   }
-
   const { message, stack } = error;
   const internalError = await prisma.expressInternalError.create({
     data: {
@@ -23,6 +15,9 @@ async function handleInternalServerError(
       stack,
     },
   });
+  if (process.env.NODE_ENV === "development") {
+    console.error(error);
+  }
   return res.status(500).json({
     error: `Internal server error. Please contact support with the following code: ${internalError.uuid}`,
   });
