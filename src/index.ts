@@ -4,6 +4,9 @@ import router from "./router";
 import ip from "ip";
 import colors from "colors/safe";
 import checkEnvVariable from "./utils/checkEnvVariable";
+import { PrismaClient } from "@prisma/client";
+
+const prisma = new PrismaClient();
 
 async function main() {
   // configure environment variables
@@ -33,6 +36,16 @@ async function main() {
   app.use(express.json());
   app.use(express.urlencoded({ extended: true }));
   app.use(router);
+
+  // check if prismas is connected to database
+  try {
+    await prisma.$connect();
+    console.log(colors.green("Prisma is connected to database"));
+  } catch (error) {
+    console.log(colors.red("Prisma is not connected to database"));
+    console.log(error);
+    process.exit(1);
+  }
 
   // start express app
   app.listen(process.env.PORT, () => {
