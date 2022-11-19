@@ -6,7 +6,9 @@
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "start": "ts-node src/index.ts",
-    "dev": "nodemon"
+    "dev": "nodemon",
+    "docker-start": "docker build -t stable-bridge-backend . && docker run -p 3000:3000 stable-bridge-backend",
+    "docker-dev": "nodemon --exec \"npm run docker-start\""
   },
   "repository": {
     "type": "git",
