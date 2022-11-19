@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 # stable-bridge-backend
 
 yarn
@@ -9,3 +10,6 @@ yarn start
 npx prisma init --datasource-provider postgresql
 
 npx prisma migrate dev --name init
+=======
+# stable-bridge-backend
+>>>>>>> main
