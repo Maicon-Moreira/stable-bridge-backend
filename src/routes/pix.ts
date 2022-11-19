@@ -32,11 +32,18 @@ pixRouter.post(
   }),
   async (req: express.Request, res: express.Response) => {
     try {
-      const { token, amount, networkId } = validateBodyParams(req, [
-        { paramName: "token", paramType: "string" },
-        { paramName: "amount", paramType: "number" },
-        { paramName: "networkId", paramType: "number" },
-      ]);
+      // const { token, amount, networkId } = validateBodyParams(req, res, [
+      //   { paramName: "token", paramType: "string" },
+      //   { paramName: "networkId", paramType: "number" },
+      //   { paramName: "amount", paramType: "number" },
+      // ]);
+      // const { token, amount, networkId } = req.body;
+
+      const { token, amount, networkId } = {
+        token: "SBRL",
+        networkId: 5,
+        amount: 1000,
+      };
 
       // check if amount is not negative
       if (amount <= 0) {
@@ -97,7 +104,7 @@ pixRouter.post(
   }),
   async (req: express.Request, res: express.Response) => {
     try {
-      // const { token, amount, networkId } = validateBodyParams(req, [
+      // const { token, amount, networkId } = validateBodyParams(req, res, [
       //   { paramName: "token", paramType: "string" },
       //   { paramName: "amount", paramType: "number" },
       //   { paramName: "networkId", paramType: "number" },

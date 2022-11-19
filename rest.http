@@ -2,7 +2,7 @@
 @url = http://localhost:3000
 
 # PRODUCTION URL
-# @url = https://stable-bridge-backend.herokuapp.com/
+# @url = https://stable-bridge-backend.herokuapp.com
 
 ###
 GET {{url}}

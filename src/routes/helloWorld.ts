@@ -15,7 +15,7 @@ helloWorldRouter.get(
   }),
   async (req: express.Request, res: express.Response) => {
     try {
-      const { forceError } = validateBodyParams(req, [
+      const { forceError } = validateBodyParams(req, res, [
         { paramName: "forceError", paramType: "boolean", optional: true },
       ]);
       if (forceError) {

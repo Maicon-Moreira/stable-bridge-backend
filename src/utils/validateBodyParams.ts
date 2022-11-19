@@ -1,4 +1,4 @@
-import { Request } from "express";
+import { Request, Response } from "express";
 
 type Param = {
   paramName: string;
@@ -6,7 +6,11 @@ type Param = {
   optional?: boolean;
 };
 
-function validateBodyParams(req: Request<any>, params: Param[]) {
+function validateBodyParams(
+  req: Request<any>,
+  res: Response<any>,
+  params: Param[]
+) {
   const body = req.body;
   if (!body) {
     throw new Error("No body found in request");
