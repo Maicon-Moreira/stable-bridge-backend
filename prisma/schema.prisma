@@ -23,6 +23,7 @@ model TokenPurchase {
   createdAt  DateTime @default(now())
   updatedAt  DateTime @updatedAt
   token      String
+  networkId  Int
   amountBRL  Float
   pix_id     Int
   qr_code    String

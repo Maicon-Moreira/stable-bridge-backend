@@ -9,6 +9,8 @@ const prisma = new PrismaClient();
 const pixRouter = express.Router();
 
 const POSSIBLE_TOKENS = ["SBRL"];
+const POSSIBLE_NETWORKS = [42161, 250, 5, 137, 80001];
+// ARBITRUM_ONE, FANTOM, GOERLI, POLYGON, POLYGON_MUMBAI
 
 // user will send what token he wants and how much BRL he wants to pay
 pixRouter.post(
@@ -19,10 +21,25 @@ pixRouter.post(
   }),
   async (req: express.Request, res: express.Response) => {
     try {
-      const { token, amount } = validateBodyParams(req, [
+      const { token, amount, networkId } = validateBodyParams(req, [
         { paramName: "token", paramType: "string" },
         { paramName: "amount", paramType: "number" },
+        { paramName: "networkId", paramType: "number" },
       ]);
+
+      // check if amount is not negative
+      if (amount <= 0) {
+        return res.status(400).json({
+          error: "Amount must be greater than 0",
+        });
+      }
+
+      // check if networkId is valid
+      if (!POSSIBLE_NETWORKS.includes(networkId)) {
+        return res.status(400).json({
+          error: "Invalid networkId",
+        });
+      }
 
       const payment = await createPayment(amount);
       // pix_id, qr_code, qr_code_base64, ticket_url
@@ -32,6 +49,7 @@ pixRouter.post(
       await prisma.tokenPurchase.create({
         data: {
           token,
+          networkId,
           amountBRL: amount,
           pix_id: parseInt(payment.pix_id),
           qr_code: payment.qr_code,

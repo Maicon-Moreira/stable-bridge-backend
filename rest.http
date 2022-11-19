@@ -1,7 +1,14 @@
-GET http://localhost:3000/
+# LOCAL URL
+@url = http://localhost:3000
+
+# PRODUCTION URL
+# @url = "https://stable-bridge-backend.herokuapp.com"
 
 ###
-GET http://localhost:3000/
+GET {{url}}
+
+###
+GET {{url}}
 Content-Type: application/json
 
 {
@@ -9,10 +16,12 @@ Content-Type: application/json
 }
 
 ###
-POST http://localhost:3000/pix
+POST {{url}}/pix
+
 Content-Type: application/json
 
 {
     "token": "SBRL",
+    "networkId": 5,
     "amount": 1000
 }
