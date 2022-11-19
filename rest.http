@@ -25,3 +25,14 @@ Content-Type: application/json
     "networkId": 5,
     "amount": 1000
 }
+
+###
+POST {{url}}/pix/estimative
+
+Content-Type: application/json
+
+{
+    "token": "SBRL",
+    "networkId": 5,
+    "amount": 1000
+}

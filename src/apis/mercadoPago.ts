@@ -1,5 +1,8 @@
 import mercadopago from "mercadopago";
 import { CreatePaymentPayload } from "mercadopago/models/payment/create-payload.model";
+import dotenv from "dotenv";
+
+dotenv.config();
 
 mercadopago.configure({
   access_token: process.env.MERCADOPAGO_ACCESS_TOKEN!,
