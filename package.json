@@ -23,11 +23,13 @@
   "homepage": "https://github.com/blockful-io/stable-bridge-backend#readme",
   "dependencies": {
     "@prisma/client": "^4.6.1",
+    "@types/cors": "^2.8.12",
     "@types/express": "^4.17.14",
     "@types/ip": "^1.1.0",
     "@types/mercadopago": "^1.5.8",
     "@types/node": "^18.11.9",
     "colors": "^1.4.0",
+    "cors": "^2.8.5",
     "dotenv": "^16.0.3",
     "express": "^4.18.2",
     "express-rate-limit": "^6.7.0",

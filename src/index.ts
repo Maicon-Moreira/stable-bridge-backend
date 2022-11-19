@@ -4,6 +4,7 @@ import router from "./router";
 import ip from "ip";
 import colors from "colors/safe";
 import checkEnvVariable from "./utils/checkEnvVariable";
+import cors from "cors";
 // import { PrismaClient } from "@prisma/client";
 
 // const prisma = new PrismaClient();
@@ -36,6 +37,7 @@ async function main() {
   app.use(express.json());
   app.use(express.urlencoded({ extended: true }));
   app.use(router);
+  app.use(cors());
 
   // // check if prismas is connected to database
   // try {
